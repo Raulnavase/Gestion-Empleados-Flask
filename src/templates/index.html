@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestion de empleador</title>
+    <title>Gestion de empleados</title>
 </head>
 <body>
     <h1>Gestión de empleados</h1>
-    <form action="" method="POST">
+
+    <form action="/add_empleado" method="POST">
+        <h3>Añadir empleado</h3>
         <input type="text" name="nombre" placeholder="Nombre">
         <input type="text" name="apellido1" placeholder="Primer apellido">
         <input type="text" name="apellido2" placeholder="Segundo apellido">
@@ -16,5 +18,32 @@
 
         <button type="submit">Agregar</button>
     </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Primer Apellido</th>
+                <th>Segundo Apellido</th>
+                <th>Departamento</th>
+                <th>Salario Anual</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        {% for e in empleados %}
+        <tbody>
+            <tr>
+                <td>{{ e.1 }}</td>
+                <td>{{ e.2 }}</td>
+                <td>{{ e.3 }}</td>
+                <td>{{ e.4 }}</td>
+                <td>{{ e.5 }}€</td>
+                <td><a href="/edit_empleado/{{ e.0 }}">Editar</a></td>
+                <td><a href="/delete_empleado/{{ e.0 }}">Eliminar</a></td>
+            </tr>
+        </tbody>
+        {% endfor %}
+    </table>
 </body>
 </html>

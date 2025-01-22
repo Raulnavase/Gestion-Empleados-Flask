@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Empleado</title>
+</head>
+<body>
+    {% for e in empleado %}
+
+    <form action="/actualizar_empleado/{{ e.0 }}" method="POST">
+        <h3>Editar empleado {{ e.1 }} {{ e.2 }} {{ e.3 }}</h3>
+        <input type="text" name="nombre" placeholder="Nombre" value="{{ e.1 }}">
+        <input type="text" name="apellido1" placeholder="Primer apellido" value="{{ e.2 }}">
+        <input type="text" name="apellido2" placeholder="Segundo apellido" value="{{ e.3 }}">
+        <input type="text" name="departamento" placeholder="Departamento" value="{{ e.4 }}">
+        <input type="number" name="salario" placeholder="Salario anual" value="{{ e.5 }}">
+
+        <button type="submit">Guardar</button>
+    </form>
+
+    {% endfor %}
+</body>
+</html>
