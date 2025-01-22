@@ -3,47 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>Gestion de empleados</title>
 </head>
-<body>
-    <h1>Gestión de empleados</h1>
+<body class="h-screen w-screen flex flex-col justify-center items-center bg-slate-400">
+    <h1 class="flex justify-center items-center border-none w-[30%] text-center text-3xl font-bold rounded-2xl h-20 shadow-md bg-slate-700 shadow-black text-white">Gestión de empleados</h1>
+    <div class="flex flex-row border border-blue-600 mt-10 w-[80%] h-[60%]">
+        <form action="/add_empleado" method="POST" class="flex flex-col text-center items-center justify-between h-[100%] w-[40%] gap-5 bg-slate-700 text-white">
+            <div class="flex justify-center items-center w-full h-[15%] bg-slate-900 text-slate-300 text-2xl">
+                <h3>Añadir empleado</h3>
+            </div>
+            <div class="flex flex-col justify-evenly h-[50%] w-[60%]">
+                <input class="bg-slate-400 rounded-md p-1 outline-white placeholder:text-white pl-2" type="text" name="nombre" placeholder="Nombre">
+                <input class="bg-slate-400 rounded-md p-1 outline-white placeholder:text-white type="text" name="apellido1" placeholder="Primer apellido">
+                <input class="bg-slate-400 rounded-md p-1 outline-white placeholder:text-white type="text" name="apellido2" placeholder="Segundo apellido">
+                <input class="bg-slate-400 rounded-md p-1 outline-white placeholder:text-white type="text" name="departamento" placeholder="Departamento">
+                <input class="bg-slate-400 rounded-md p-1 outline-white placeholder:text-white type="number" name="salario" placeholder="Salario anual">
+            </div>
+            <div class="flex justify-center items-center w-full h-[15%] bg-slate-500 text-slate-100 text-2xl cursor-pointer hover:text-3xl hover:bg-slate-900">
+                <button type="submit">Agregar</button>
+            </div>
+        </form>
 
-    <form action="/add_empleado" method="POST">
-        <h3>Añadir empleado</h3>
-        <input type="text" name="nombre" placeholder="Nombre">
-        <input type="text" name="apellido1" placeholder="Primer apellido">
-        <input type="text" name="apellido2" placeholder="Segundo apellido">
-        <input type="text" name="departamento" placeholder="Departamento">
-        <input type="number" name="salario" placeholder="Salario anual">
-
-        <button type="submit">Agregar</button>
-    </form>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Primer Apellido</th>
-                <th>Segundo Apellido</th>
-                <th>Departamento</th>
-                <th>Salario Anual</th>
-                <th>Editar</th>
-                <th>Eliminar</th>
-            </tr>
-        </thead>
-        {% for e in empleados %}
-        <tbody>
-            <tr>
-                <td>{{ e.1 }}</td>
-                <td>{{ e.2 }}</td>
-                <td>{{ e.3 }}</td>
-                <td>{{ e.4 }}</td>
-                <td>{{ e.5 }}€</td>
-                <td><a href="/edit_empleado/{{ e.0 }}">Editar</a></td>
-                <td><a href="/delete_empleado/{{ e.0 }}">Eliminar</a></td>
-            </tr>
-        </tbody>
-        {% endfor %}
-    </table>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Primer Apellido</th>
+                    <th>Segundo Apellido</th>
+                    <th>Departamento</th>
+                    <th>Salario Anual</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            {% for e in empleados %}
+            <tbody>
+                <tr>
+                    <td>{{ e.1 }}</td>
+                    <td>{{ e.2 }}</td>
+                    <td>{{ e.3 }}</td>
+                    <td>{{ e.4 }}</td>
+                    <td>{{ e.5 }}€</td>
+                    <td><a href="/edit_empleado/{{ e.0 }}">Editar</a></td>
+                    <td><a href="/delete_empleado/{{ e.0 }}">Eliminar</a></td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+    </div>
 </body>
 </html>
